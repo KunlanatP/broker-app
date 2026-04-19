@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"log"
 
 	"com.kunlanat.github/broker-api/internal/config"
@@ -32,6 +33,11 @@ func main() {
 	}
 
 	for _, item := range data {
+		d, err := json.Marshal(broker.NewSeededDetail(item.Name, item.Slug, item.Website, item.BrokerType))
+		if err != nil {
+			log.Fatal(err)
+		}
+		item.Detail = d
 		db.Create(&item)
 	}
 

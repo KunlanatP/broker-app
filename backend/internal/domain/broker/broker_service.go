@@ -1,6 +1,8 @@
 package broker
 
 import (
+	"bytes"
+	"encoding/json"
 	"errors"
 
 	"github.com/go-playground/validator/v10"
@@ -44,6 +46,11 @@ func (s *service) Create(req CreateBrokerRequest) (Broker, error) {
 		return Broker{}, ErrBrokerSlugExists
 	}
 
+	detailBytes, err := resolveCreateDetail(req)
+	if err != nil {
+		return Broker{}, err
+	}
+
 	payload := Broker{
 		Name:        req.Name,
 		Slug:        req.Slug,
@@ -51,6 +58,7 @@ func (s *service) Create(req CreateBrokerRequest) (Broker, error) {
 		LogoURL:     req.LogoURL,
 		Website:     req.Website,
 		BrokerType:  req.BrokerType,
+		Detail:      detailBytes,
 	}
 
 	return s.repo.Create(payload)
@@ -70,4 +78,17 @@ func (s *service) FindBySlug(slug string) (Broker, error) {
 	}
 
 	return broker, nil
+}
+
+func resolveCreateDetail(req CreateBrokerRequest) ([]byte, error) {
+	raw := bytes.TrimSpace(req.Detail)
+	if len(raw) == 0 || string(raw) == "null" || string(raw) == "{}" {
+		d := NewSeededDetail(req.Name, req.Slug, req.Website, req.BrokerType)
+		return json.Marshal(d)
+	}
+	var check map[string]interface{}
+	if err := json.Unmarshal(raw, &check); err != nil {
+		return nil, err
+	}
+	return raw, nil
 }

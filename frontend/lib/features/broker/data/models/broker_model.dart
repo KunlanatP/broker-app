@@ -17,6 +17,8 @@ class BrokerModel {
   @JsonKey(name: 'broker_type')
   final String brokerType;
 
+  final Map<String, dynamic>? detail;
+
   BrokerModel({
     required this.id,
     required this.name,
@@ -25,6 +27,7 @@ class BrokerModel {
     required this.logoUrl,
     required this.website,
     required this.brokerType,
+    this.detail,
   });
 
   factory BrokerModel.fromJson(Map<String, dynamic> json) =>

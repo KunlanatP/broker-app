@@ -1,10 +1,4 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
-
 part of 'broker_model.dart';
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
 
 BrokerModel _$BrokerModelFromJson(Map<String, dynamic> json) => BrokerModel(
   id: (json['id'] as num).toInt(),
@@ -14,6 +8,7 @@ BrokerModel _$BrokerModelFromJson(Map<String, dynamic> json) => BrokerModel(
   logoUrl: json['logo_url'] as String,
   website: json['website'] as String,
   brokerType: json['broker_type'] as String,
+  detail: json['detail'] as Map<String, dynamic>?,
 );
 
 Map<String, dynamic> _$BrokerModelToJson(BrokerModel instance) =>
@@ -25,4 +20,5 @@ Map<String, dynamic> _$BrokerModelToJson(BrokerModel instance) =>
       'logo_url': instance.logoUrl,
       'website': instance.website,
       'broker_type': instance.brokerType,
+      'detail': instance.detail,
     };

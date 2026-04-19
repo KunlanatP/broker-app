@@ -10,6 +10,7 @@ type Broker struct {
 	LogoURL     string    `json:"logo_url" gorm:"type:text;not null"`
 	Website     string    `json:"website" gorm:"type:text;not null"`
 	BrokerType  string    `json:"broker_type" gorm:"type:varchar(20);not null"`
+	Detail      []byte    `json:"detail" gorm:"type:jsonb"`
 	CreatedAt   time.Time `json:"created_at"`
 	UpdatedAt   time.Time `json:"updated_at"`
 }

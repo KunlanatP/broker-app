@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import '../core/theme/app_theme.dart';
 import 'router/app_router.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Broker App',
+      title: 'Woxa — Institutional Brokers',
       routerConfig: router,
       builder: (context, child) {
         return ResponsiveBreakpoints.builder(
@@ -23,11 +24,7 @@ class MyApp extends StatelessWidget {
           ],
         );
       },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-        scaffoldBackgroundColor: const Color(0xFFF7F8FA),
-        useMaterial3: true,
-      ),
+      theme: buildAppTheme(),
     );
   }
 }

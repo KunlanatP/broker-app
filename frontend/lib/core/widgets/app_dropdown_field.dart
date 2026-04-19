@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_colors.dart';
+
 class AppDropdownField extends StatelessWidget {
   final String label;
   final String? value;
@@ -21,6 +23,8 @@ class AppDropdownField extends StatelessWidget {
     return DropdownButtonFormField<String>(
       value: value,
       validator: validator,
+      dropdownColor: AppColors.dropdownMenuBackground,
+      style: const TextStyle(color: Colors.white),
       decoration: InputDecoration(
         labelText: label,
         border: const OutlineInputBorder(),

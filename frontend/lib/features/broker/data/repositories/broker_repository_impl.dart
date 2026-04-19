@@ -24,6 +24,14 @@ class BrokerRepositoryImpl implements BrokerRepository {
             logoUrl: e.logoUrl,
             website: e.website,
             brokerType: e.brokerType,
+            profile: BrokerProfile.merge(
+              e.detail,
+              name: e.name,
+              slug: e.slug,
+              description: e.description,
+              website: e.website,
+              brokerType: e.brokerType,
+            ),
           ),
         )
         .toList();
@@ -41,6 +49,14 @@ class BrokerRepositoryImpl implements BrokerRepository {
       logoUrl: e.logoUrl,
       website: e.website,
       brokerType: e.brokerType,
+      profile: BrokerProfile.merge(
+        e.detail,
+        name: e.name,
+        slug: e.slug,
+        description: e.description,
+        website: e.website,
+        brokerType: e.brokerType,
+      ),
     );
   }
 
