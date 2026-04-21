@@ -1,10 +1,18 @@
 # broker-app
+
 Woxa : Test for Full-Stack Developer
-ตัวอย่างการเรียกใช้งาน API
 
-Create (POST)
+---
+
+## 📌 API Usage
+
+### ➕ Create Broker (POST)
+
+```
 http://localhost:8080/api/brokers/
+```
 
+```bash
 curl --location 'http://localhost:8080/api/brokers/' \
 --header 'Content-Type: application/json' \
 --data '{
@@ -15,15 +23,42 @@ curl --location 'http://localhost:8080/api/brokers/' \
   "website": "https://blackwood-capital.com",
   "broker_type": "bond"
 }'
-List (GET)
+```
+
+---
+
+### 📄 List Brokers (GET)
+
+```
 http://localhost:8080/api/brokers/
+```
 
+```bash
 curl --location 'http://localhost:8080/api/brokers/'
-Search + Filter (GET)
+```
+
+---
+
+### 🔍 Search + Filter (GET)
+
+```
 http://localhost:8080/api/brokers/?search=Blackwood&type=bond
+```
 
+```bash
 curl --location 'http://localhost:8080/api/brokers/?search=Blackwood&type=bond'
-Detail (GET)
-http://localhost:8080/api/brokers/blackwood-capital-markets
+```
 
+---
+
+### 🔎 Broker Detail (GET)
+
+```
+http://localhost:8080/api/brokers/blackwood-capital-markets
+```
+
+```bash
 curl --location 'http://localhost:8080/api/brokers/blackwood-capital-markets'
+```
+
+---
